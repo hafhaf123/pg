@@ -1,8 +1,7 @@
 # pg
 
-## 1. Projekt
-- Tento projekt je jednoduchý Pythonový příklad určený k procvičení základních matematických operací a podmínek.
-- Slouží jako ukázka práce se funkcemi, proměnnými a kontrolou podmínek v Pythonu.
+## 1. s_post
+- Složka jenž byla vytvořena pro experimenty na koleji v případě nudy.
 
 ## 2. README.md
 - Soubor obsahuje přehled projektu, popis jednotlivých souborů a orientaci v celé složce.
@@ -15,4 +14,3 @@
 ## 4. xxx.py
 - V tomto souboru jsou definovány funkce pro sčítání, násobení, dělení a kontrolu dělitelnosti.
 - Soubor slouží jako ukázka návratových hodnot, podmínek a práce s více matematickými funkcemi v jednom modulu.
-
