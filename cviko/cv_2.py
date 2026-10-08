@@ -1,9 +1,25 @@
 def vxp(seznam,x,nasobek):
     if x > len(seznam):
-        print(f"Seznam má {len(seznam)} prvků.")
-    else:
-        seznam[x-1] = seznam[x-1] * nasobek
+        print(f"Seznam má jenom {len(seznam)} prvků.")
+        return seznam
+    
+    x -= 1
+    
+    if x < 0:
+        print(f"Seznam má jenom {len(seznam)} prvků.")
+        return seznam
+    
+    seznam[x] *= nasobek
     return seznam
+
+def prumer(seznam):
+    if len(seznam) == 0:
+        print("Seznam je prázdný.")
+        return 0
+    
+    vysledek = sum(seznam) / len(seznam)
+    print(f"Průměr seznamu je {vysledek}.")
+    return vysledek
     
 if __name__ == "__main__":
    
@@ -11,7 +27,9 @@ if __name__ == "__main__":
     seznam = vxp([1,2,3,4,5], 3, 10)
     print(seznam) # [1, 2, 30, 4, 5]
 
-
+    vysledek = sum(seznam)
+    print(f"Součet seznamu je {vysledek}.")
+    prumer(seznam)
 
 
 
