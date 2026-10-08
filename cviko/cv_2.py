@@ -13,7 +13,7 @@ def vxp(seznam,x,nasobek):
     return seznam
 
 def prumer(seznam):
-    if len(seznam) == 0:
+    if len(seznam) <= 0:
         print("Seznam je prázdný.")
         return 0
     
