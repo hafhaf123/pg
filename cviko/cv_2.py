@@ -15,21 +15,49 @@ def vxp(seznam,x,nasobek):
 def prumer(seznam):
     if len(seznam) <= 0:
         print("Seznam je prázdný.")
-        return 0
+        return None
     
     vysledek = sum(seznam) / len(seznam)
-    print(f"Průměr seznamu je {vysledek}.")
+     #print(f"Průměr seznamu je {vysledek}.")
     return vysledek
+
+
+def format(student):
+            vysledek = prumer(student["znamky"])
+            vysledek = round(vysledek, 1)
+            return f" Student {student['jmeno']} {student['prijmeni']}, Vek: {student['vek']}, Prumer:{vysledek}."
+
+    
     
 if __name__ == "__main__":
    
 
-    seznam = vxp([1,2,3,4,5], 3, 10)
-    print(seznam) # [1, 2, 30, 4, 5]
+    stundent= {
+        "jmeno": "Petr",
+        "prijmeni": "Novak",
+        "vek": 20,
+        "znamky": [1, 2, 1, 1,3,2]
 
-    vysledek = sum(seznam)
-    print(f"Součet seznamu je {vysledek}.")
-    prumer(seznam)
+    }
+
+    print(format(stundent)) #"Petr Novak 20 let má průměrnou známku 1.7."
+
+
+
+
+
+
+
+
+
+
+
+    #seznam = vxp([1,2,3,4,5], 3, 10)
+    #print(seznam) # [1, 2, 30, 4, 5]
+
+    #vysledek = sum(seznam)
+    #print(f"Součet seznamu je {vysledek}.")
+    #prumer(seznam)
 
 
 
