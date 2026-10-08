@@ -22,19 +22,15 @@ def cislo_text(cislo):
     elif 10 <= cislo <= 20:
         return nactiny[cislo]
     else:
-        desitka = (cislo // 10) * 10
-        jednotka = cislo % 10
+        desitka = (cislo // 10) * 10 # vydelení čísla 10 a zaokrouhlení dolů na celé číslo, pak vynásobení 10
+        jednotka = cislo % 10 # zbytek po dělení čísla 10
         if jednotky == 0:
             return desitka[desitky]
         else:
             return f"{desitky[desitka]} {jednotky[jednotka]}"
 
-
-
-    # funkce zkonvertuje cislo do jeho textove reprezentace
-    # napr: "25" -> "dvacet pět", omezte se na cisla od 0 do 100
-
 if __name__ == "__main__":
+    print("Program převádí čísla na text (0-100).")
     cislo = float(input("Zadej číslo: "))
     text = cislo_text(cislo)
     print(text)
