@@ -2,6 +2,7 @@
 
 ## 1. s_post
 - Složka jenž byla vytvořena pro experimenty na koleji v případě nudy.
+- A.K.A. můj SHITPOST
 
 ## 2. README.md
 - Soubor obsahuje přehled projektu, popis jednotlivých souborů a orientaci v celé složce.
