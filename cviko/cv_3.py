@@ -31,6 +31,18 @@ def my_zip (*iterables):
        else:
         print(f'jmena: {iterables[0][i]}, vek: {iterables[1][i]}, bydliste: {iterables[2][i]}')
 
+def my_zipe (*iterables):
+    vysledek = []
+    lenght = len(iterables[0])
+    i = 0
+    while i < lenght:
+        value = []
+        for iterable in iterables:
+            value.append(iterable[i])
+        vysledek.append(tuple(value))
+        i += 1
+
+    return vysledek
 
 if __name__ == "__main__":
     #my_range(1,10,2)
@@ -42,4 +54,6 @@ if __name__ == "__main__":
     vek=[30,25,26]
     bydliste=["Praha","Brno","Ostrava"]
 
-    print(my_zip(vek,jmena,bydliste))
+    my_zip(vek,jmena,bydliste)
+
+    my_zipe(vek,jmena,bydliste)
