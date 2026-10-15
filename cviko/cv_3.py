@@ -26,7 +26,7 @@ def my_enum_while (iterable, start=0):
 
 def my_zip (*iterables):
     for i in range(len(iterables[0]) and len(iterables[1]) and len(iterables[2])):
-       if i > len(iterables[0]) or i >= len(iterables[1]) or i >= len(iterables[2]):
+       if i > len(iterables[0]) or i > len(iterables[1]) or i > len(iterables[2]):
            break
        else:
         print(f'jmena: {iterables[0][i]}, vek: {iterables[1][i]}, bydliste: {iterables[2][i]}')
