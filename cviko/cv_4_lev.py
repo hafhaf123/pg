@@ -1,4 +1,15 @@
 def levensteinova_vzdalenost(dotaz1, dotaz2):
+    levenstein = 0
+
+    lenght = min(len(dotaz1), len(dotaz2))
+    for i in range(lenght):
+        if dotaz1[i] != dotaz2[i]:
+            levenstein += 1
+    levenstein += abs(len(dotaz1) - len(dotaz2))
+    return levenstein
+    
+
+
     """
     Levenshteinova vzdálenost měří, jak moc se dva textové řetězce liší.
     Představuje minimální počet úprav (smazání, vložení nebo nahrazení jednoho písmene), 
@@ -25,8 +36,8 @@ if __name__ == "__main__":
     query3 = "sesnam"
     query4 = "seznam"
 
-    print(levensteinova_vzdalenost_for(query1, query2))
-    print(levensteinova_vzdalenost_for(query2, query3))
-    print(levensteinova_vzdalenost_for(query1, query3))
+    print(levensteinova_vzdalenost(query1, query2))
+    print(levensteinova_vzdalenost(query2, query3))
+    print(levensteinova_vzdalenost(query1, query3))
 
-    print(levensteinova_vzdalenost_for(query1, query4))
+    print(levensteinova_vzdalenost(query1, query4))
