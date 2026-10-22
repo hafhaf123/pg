@@ -1,32 +1,38 @@
-def jaccardova_vzdalenost_mnozin(mnozina1, mnozina2):
-    """
-    Jaccardova vzdálenost měří, jak moc se dvě množiny liší. 
-    Výsledek je vždy číslo v rozmezí od 0 do 1:
-    - 0 znamená, že množiny jsou naprosto identické (obsahují úplně stejné prvky).
-    - 1 znamená, že jsou zcela rozdílné (nemají vůbec žádný společný prvek).
-    - Čím blíže je číslo 1, tím jsou množiny odlišnější; čím blíže 0, tím jsou podobnější.
+from cviceni4_jaccard import jaccardova_vzdalenost_mnozin
+from cviceni4_levenstein import levensteinova_vzdalenost
 
-    Příklady:
-    - Množina A = {"fotbal", "hokej"} a Množina B = {"hokej", "fotbal"} -> vzdálenost je 0 (jsou stejné).
-    - Množina A = {"fotbal", "hokej"} a Množina B = {"tenis", "basketbal"} -> vzdálenost je 1 (nemají nic společného).
-    - Množina A = {"fotbal", "hokej"} a Množina B = {"tenis", "fotbal"} -> sdílí 1 prvek z 3 celkových 
-      (sjednocení je {"fotbal", "hokej", "tenis"}), vzdálenost je přibližně 0.33.
 
-    Využívá se např. v doporučujících systémech (porovnání toho, jaké filmy nebo zboží mají dva uživatelé společné) 
-    nebo při porovnávání textů.
-
-    :param mnozina1: První množina prvků
-    :param mnozina2: Druhá množina prvků
-    :return: Desetinné číslo (float) od 0.0 do 1.0 udávající míru rozdílu
-    """
-    pass
+def deduplikace_dotazu(dotazy):
+    i = 0
+    while i < len(dotazy):
+        j = i + 1
+        while j < len(dotazy):
+            jaccard = jaccardova_vzdalenost_mnozin(dotazy[i]["serp"], dotazy[j]["serp"])
+            levenstein = levensteinova_vzdalenost(dotazy[i]["dotaz"], dotazy[j]["dotaz"])
+            if jaccard < 0.5 or levenstein <= 1:
+                dotazy.pop(j)
+            else:
+                j += 1
+        i += 1
+    return dotazy
 
 
 if __name__ == "__main__":
-    serp1 = ["https://www.seznam.cz", "https://www.jcu.cz", "https://www.czu.cz", "https://www.cvut.cz", "https://www.uk.cz", "https://www.google.com"]
-    serp2 = ["https://www.seznam.cz", "https://www.google.com", "https://www.novinky.cz", "https://www.idnes.cz", "https://www.zpravy.cz", "https://www.tn.cz"]
-    serp3 = ["https://www.jcu.cz", "https://www.czu.cz", "https://www.cvut.cz", "https://www.uk.cz"]
 
-    print(jaccardova_vzdalenost_mnozin(serp1, serp2))
-    print(jaccardova_vzdalenost_mnozin(serp2, serp3))
-    print(jaccardova_vzdalenost_mnozin(serp1, serp3))
+    dotaz1 = {
+        "dotaz": "seznam",
+        "serp": ["https://www.seznam.cz", "https://www.jcu.cz", "https://www.czu.cz", "https://www.cvut.cz", "https://www.uk.cz", "https://www.google.com"]
+    }
+    dotaz2 = {
+        "dotaz": "seznamka",
+        "serp": ["https://www.seznam.cz", "https://www.google.com", "https://www.novinky.cz", "https://www.idnes.cz", "https://www.zpravy.cz", "https://www.tn.cz"]
+    }
+    dotaz3 = {
+        "dotaz": "sesnam",
+        "serp": ["https://www.jcu.cz", "https://www.czu.cz", "https://www.cvut.cz", "https://www.uk.cz"]
+    }
+    dotaz4 = {
+        "dotaz": "google",
+        "serp": ["https://www.google.com", "https://maps.google.com", "https://www.gmail.com"]
+    }
+    print(deduplikace_dotazu([dotaz1, dotaz2, dotaz3, dotaz4]))
