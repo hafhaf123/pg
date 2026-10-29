@@ -1,7 +1,6 @@
 import sys
 
 def inkrementuj_cisla(data):
-    data.split(",")
     pass
 
 def nacti_radky(file_name):
