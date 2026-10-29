@@ -5,15 +5,15 @@ def inkrementuj_cisla(data):
 
 def nacti_radky(file_name):
     radky=[]
-    with open(file_name, 'r') as file:
+    with open(file_name, "r") as file:
         for line in file:
             radky.append(line.strip())
     return radky
 
 def zapis_radky(file_name, data):
-    with open(file_name, 'w') as file:
+    with open(file_name, "w") as file:
         for line in data:
-            file.write(line + '\n')
+            file.write(line + "\n")
 
 if __name__ == "__main__":
 
