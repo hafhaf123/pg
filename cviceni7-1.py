@@ -2,13 +2,13 @@ class Osoba:
     def __init__(self, jmeno, vek):
         self.jmeno = jmeno
         self.vek = vek
-
+    
     def __str__(self):
         return f'Osoba {self.jmeno} ma {self.vek} let'
 
     def pridat_rok(self):
-        self.vek += 1
-
+        if self.vek < 100:
+            self.vek += 1
 
 class Student(Osoba):
     def __init__(self, jmeno, vek, rocnik):
@@ -16,57 +16,50 @@ class Student(Osoba):
         self.rocnik = rocnik
 
     def __str__(self):
-        return f'Student {self.jmeno} ma {self.vek} let a je v {self.rocnik}. rocniku'
+        return f"Student {self.jmeno} ma {self.vek} let a studuje {self.rocnik} rocnik"
 
     def pridat_rok(self):
+        # metoda zvysuje vek a zaroven rocnik, ale pouze do 5 (neexistuje vyssi rocnik nez 5)
+        super().pridat_rok()
         if self.rocnik < 5:
             self.rocnik += 1
-            self.vek += 1
-        else:
-            self.rocnik = 5
-            self.vek +=1
-
 
 class Ucitel(Osoba):
-    def __init__(self, jmeno, vek, praxe):
+    def __init__(self, jmeno, vek, roky_praxe):
         super().__init__(jmeno, vek)
-        self.praxe = praxe
+        self.roky_praxe = roky_praxe
 
     def __str__(self):
-        return f'Učitel {self.jmeno} ma {self.vek} let a má {self.praxe}. let praxe'
+        return f"Ucitel {self.jmeno} ma {self.vek} let a ma {self.roky_praxe} let praxe"
 
-    def pridat_praxe(self):
-        self.vek += 1
-        self.praxe += 1
+    def pridat_rok(self):
+        # metoda zvysuje vek + roky_praxe
+        super().pridat_rok()
+        self.roky_praxe += 1
 
 class Udrzbar(Osoba):
     def __init__(self, jmeno, vek):
         super().__init__(jmeno, vek)
-        
 
     def __str__(self):
-        return f'Udržbář {self.jmeno} ma {self.vek} let a je to údržbář'
-
-    def pridat_vek(self):
-        self.vek += 1
+        return f"Udrzbar {self.jmeno} ma {self.vek} let"
 
 if __name__ == "__main__":
-    osoba = Osoba("Vlada", 44)
-    student = Student("Petr", 20, 2)
-    ucitel = Ucitel("Jana", 35, 10)
-    udrzbar = Udrzbar("Karel", 50)
-
-    print(osoba)
-    osoba.pridat_rok()
-    print(osoba)
-    print(student)
-    student.pridat_rok()
-    print(student)
-    student.pridat_rok()#4
-    student.pridat_rok()#5
-    student.pridat_rok()#6
-    print(student)
-    print(ucitel)
-    ucitel.pridat_praxe()
-    print(ucitel)
-    print(udrzbar)
+    osoby = [
+        Student("Tomas", 20, 2),
+        Ucitel("Vlada", 44, 3),
+        Student("Jana", 19, 1),
+        Udrzbar("Martin", 50)
+    ]
+    for osoba in osoby:
+        print(osoba)
+    
+    for osoba in osoby:
+        osoba.pridat_rok()
+        osoba.pridat_rok()
+        osoba.pridat_rok()
+        osoba.pridat_rok()
+        osoba.pridat_rok()
+    
+    for osoba in osoby:
+        print(osoba)
